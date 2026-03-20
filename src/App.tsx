@@ -426,7 +426,7 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
-          <EngineArchitecture />
+          <EngineShowcase />
           <AnalysisWorkspace />
           <Comparison />
           <CTA />

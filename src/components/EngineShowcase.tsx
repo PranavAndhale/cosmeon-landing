@@ -1,6 +1,4 @@
-"use client";
-
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { Activity, Brain, Server, ShieldAlert, Database, TrendingUp, CloudRain, MonitorPlay } from "lucide-react";
 
@@ -8,13 +6,13 @@ const PILLARS = [
   {
     id: "01",
     title: "Live Flood Detection",
-    description: "Detects active flooding using real satellite and hydrology data. Utilizes GloFAS v4 and Open-Meteo ERA5 precipitation archives in a tiered fallback system.",
+    description: "Detects active flooding using real satellite and hydrology data. Utilizes GloFAS v4 and ERA5 precipitation archives in a tiered fallback system.",
     icon: Activity
   },
   {
     id: "02",
     title: "ML Prediction Engine",
-    description: "XGBoost and LightGBM (55/45 ensemble) soft-voting model using 13 weather and terrain features. 5-fold cross-validated independence from ground truth.",
+    description: "XGBoost and LightGBM (55/45 ensemble) soft-voting model using 13 weather and terrain features. 5-fold cross-validated independence.",
     icon: Brain
   },
   {
@@ -38,7 +36,7 @@ const PILLARS = [
   {
     id: "06",
     title: "6-Month Forecast",
-    description: "Probabilistic tiered precipitation forecast engine dropping from ECMWF SEAS5 to ERA5+GFS to CMIP6 climatology, outputting mm predictions and confidence bands.",
+    description: "Probabilistic tiered precipitation forecast engine dropping from ECMWF SEAS5 to ERA5+GFS to CMIP6 climatology, outputting mm predictions.",
     icon: CloudRain
   },
   {
@@ -60,6 +58,7 @@ function PillarItem({
   index, 
   scrollYProgress 
 }: { 
+  key?: React.Key;
   pillar: typeof PILLARS[0]; 
   index: number; 
   scrollYProgress: MotionValue<number>; 
@@ -73,17 +72,17 @@ function PillarItem({
 
   return (
     <motion.div
-      className="absolute top-1/2 -translate-y-1/2 w-full glass p-8 rounded-2xl border border-white/10 shadow-2xl bg-black/40 backdrop-blur-xl"
+      className="absolute top-1/2 -translate-y-1/2 w-full glass-panel p-8 rounded-2xl border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] bg-black/60 backdrop-blur-xl"
       style={{ opacity, y }}
     >
       <div className="flex items-center gap-4 mb-4">
-        <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20">
+        <div className="w-10 h-10 rounded-full flex items-center justify-center text-cosmeon-accent border border-cosmeon-accent/30 bg-cosmeon-accent/10 shadow-[0_0_15px_rgba(0,210,255,0.2)]">
           <pillar.icon size={18} />
         </div>
-        <span className="font-mono text-sm tracking-widest text-blue-400">PILLAR {pillar.id}</span>
+        <span className="font-mono text-sm tracking-widest text-cosmeon-accent uppercase">PILLAR {pillar.id}</span>
       </div>
-      <h3 className="text-2xl font-medium mb-3">{pillar.title}</h3>
-      <p className="text-white/60 leading-relaxed font-light text-sm">
+      <h3 className="text-2xl font-bold text-white mb-3">{pillar.title}</h3>
+      <p className="text-slate-400 leading-relaxed font-medium text-sm">
         {pillar.description}
       </p>
     </motion.div>
@@ -98,31 +97,33 @@ export function EngineShowcase() {
   });
 
   return (
-    <section ref={containerRef} className="relative bg-[#030303]">
+    <section ref={containerRef} className="relative bg-[#010409]">
       <div className="h-[400vh] w-full relative">
         {/* Sticky Container */}
         <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
           
           {/* Background Canvas Placeholder - "Sofi-inspired" */}
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-[#030303]/80 z-10 pointer-events-none" />
-            <div className="w-full h-full flex items-center justify-center bg-black/50">
+            <div className="absolute inset-0 bg-gradient-to-b from-[#010409] via-transparent to-[#020617] z-10 pointer-events-none" />
+            <div className="w-full h-full flex items-center justify-center bg-black/40">
               <motion.div 
-                className="w-full h-full border-t border-b border-white/5 glass flex items-center justify-center overflow-hidden relative"
+                className="w-full h-full border-t border-b border-white/5 glass-panel flex flex-col items-center justify-center overflow-hidden relative"
                 style={{
                   opacity: useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0])
                 }}
               >
-                <div className="text-white/20 font-mono text-sm tracking-widest text-center px-12 z-20 flex flex-col items-center gap-4">
-                  <div className="w-24 h-24 border-2 border-dashed border-white/20 rounded-full animate-[spin_10s_linear_infinite]" />
-                  <span className="block mb-2">[NANO BANANA CANVAS SEQUENCE]</span>
-                  <span className="text-[10px] opacity-60 max-w-sm">
+                <div className="text-cosmeon-accent/60 font-mono text-sm tracking-widest text-center px-12 z-20 flex flex-col items-center gap-6">
+                  <div className="w-32 h-32 border-2 border-dashed border-cosmeon-accent/40 rounded-full animate-[spin_10s_linear_infinite] shadow-[0_0_30px_rgba(0,210,255,0.1)] flex items-center justify-center">
+                    <div className="w-16 h-16 border border-cosmeon-accent/20 rounded-full animate-[spin_5s_linear_infinite_reverse]" />
+                  </div>
+                  <span className="block mb-2 text-white glow-text">[NANO BANANA CANVAS SEQUENCE]</span>
+                  <span className="text-[10px] opacity-80 max-w-sm text-slate-400 leading-relaxed uppercase">
                     Scroll-linked 3D cinematic zoom through the 8 pillars of the backend architecture here.
                   </span>
                 </div>
                 {/* Simulated Wireframe / Nodes */}
                 <motion.div 
-                  className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent top-1/2"
+                  className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-cosmeon-accent/30 to-transparent top-1/2"
                   style={{
                     scaleX: useTransform(scrollYProgress, [0, 1], [0, 1]),
                   }}
@@ -133,7 +134,7 @@ export function EngineShowcase() {
 
           {/* Foreground Scroll Content */}
           <div className="absolute inset-0 z-20 pointer-events-none">
-            <div className="container mx-auto px-6 h-full flex flex-col justify-center relative">
+            <div className="max-w-7xl mx-auto px-6 h-full flex flex-col justify-center relative">
               
               <motion.div 
                 className="max-w-xl hidden md:block"
@@ -142,10 +143,11 @@ export function EngineShowcase() {
                   y: useTransform(scrollYProgress, [0, 0.1], [0, -50])
                 }}
               >
-                <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-6">
-                  The <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">8-Pillar</span> Architecture
+                <span className="text-cosmeon-accent text-xs font-bold tracking-[0.2em] uppercase mb-4 block">The Engine</span>
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white leading-tight">
+                  The <span className="text-cosmeon-accent glow-text">8-Pillar</span> <br /> Architecture
                 </h2>
-                <p className="text-xl text-white/50 leading-relaxed font-light">
+                <p className="text-lg text-slate-400 leading-relaxed font-medium">
                   COSMEON is built on a heavily validated, independent ML pipeline 
                   fueled by established global data sources.
                 </p>

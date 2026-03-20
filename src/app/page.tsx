@@ -1,18 +1,15 @@
-import { Navbar } from '@/components/Navbar';
-import { Hero } from '@/components/Hero';
-import { Features } from '@/components/Features';
-import { Footer } from '@/components/Footer';
+import { Hero } from "@/components/Hero";
+import { EngineShowcase } from "@/components/EngineShowcase";
+import { WorkspaceOrbs } from "@/components/WorkspaceOrbs";
+import { BeforeAfter } from "@/components/BeforeAfter";
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative overflow-hidden bg-background">
-      {/* Dynamic background glow */}
-      <div className="fixed inset-0 min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-background via-background to-black pointer-events-none -z-10" />
-
-      <Navbar />
+    <main className="flex min-h-screen flex-col bg-[#030303]">
       <Hero />
-      <Features />
-      <Footer />
+      <EngineShowcase />
+      <WorkspaceOrbs />
+      <BeforeAfter />
     </main>
   );
 }

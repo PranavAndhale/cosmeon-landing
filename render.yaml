@@ -1,6 +1,9 @@
 services:
   - type: web
     name: cosmeon-landing
-    env: static
+    env: node
     buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production

@@ -1,0 +1,12 @@
+{
+  "name": "cosmeon-orbify-clone",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'No build required'"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

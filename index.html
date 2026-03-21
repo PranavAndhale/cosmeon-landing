@@ -57,6 +57,21 @@ j=d.createElement(s),dl=l!=&#39;dataLayer&#39;?&#39;&amp;l=&#39;+l:&#39;&#39;;j.
 })(window,document,&#39;script&#39;,&#39;dataLayer&#39;,&#39;GTM-P75DDQJ&#39;);
     </script>
     <!-- End Google Tag Manager -->
+    <style>
+      /* Client Aesthetic Request: Subtle green-beige global background instead of stark white */
+      body {
+        background-color: #f1f3ec !important;
+      }
+      .principal-section:not(.black-bg) {
+        background-color: #f1f3ec !important;
+      }
+      /* Restore visual borders that blend in when background is broken */
+      .customer-element.white {
+        background-color: #ffffff !important;
+        border-radius: 24px !important;
+        padding: 40px !important;
+      }
+    </style>
     <!-- ===== LENIS CSS (OBLIGATOIRE pour stabilité Webflow) ===== -->
     <style>
       html.lenis,
@@ -119,8 +134,6 @@ j=d.createElement(s),dl=l!=&#39;dataLayer&#39;?&#39;&amp;l=&#39;+l:&#39;&#39;;j.
 </a>
           </div>
           <div class="double-button-container-navbar">
-            <a href="/book-a-demo" class="main-button nav w-button">            Book a Demo
-</a>
             <a href="https://cosmeon.onrender.com" target="_blank" class="main-button secondary-2 nav w-button">            Launch Engine
 </a>
           </div>
@@ -568,7 +581,7 @@ j=d.createElement(s),dl=l!=&#39;dataLayer&#39;?&#39;&amp;l=&#39;+l:&#39;&#39;;j.
       <section class="principal-section">
         <div class="principal-container">
           <div>
-            <img src="./methodology_diagram.png" loading="lazy" alt="Cosmeon 8-Pillar Architecture Methodology" class="image-full-width simple" />
+            <img src="./methodology_diagram.png" loading="lazy" alt="Cosmeon 8-Pillar Architecture Methodology" class="image-full-width simple" style="max-width: 1000px; margin: 0 auto; display: block;" />
           </div>
         </div>
       </section>
